@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Uni Student Guide – UTG | Faraba is Home</title>
+<meta name="description" content="Uni Student Guide: explore University of The Gambia schools and programmes, get motivation, and look up words and topics.">
+<style>
+:root{box-sizing:border-box;--bg:#f6f5f0;--card:#fff;--text:#1b1f1d;--muted:#5d645f;--green:#0b5d3b;--green2:#0f7a4e;--gold:#f2b705;--border:#e3e1d8;--tint:#e4f3ea;--shadow:0 6px 24px rgba(0,0,0,.07)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121513;--card:#1b201d;--text:#eef1ee;--muted:#a3ada6;--green:#2fbf7f;--green2:#0f7a4e;--border:#2c332e;--tint:#14301f;--shadow:0 6px 24px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121513;--card:#1b201d;--text:#eef1ee;--muted:#a3ada6;--green:#2fbf7f;--green2:#0f7a4e;--border:#2c332e;--tint:#14301f;--shadow:0 6px 24px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+section{padding:56px 0}
+.eyebrow{color:var(--green);font-weight:700;letter-spacing:.12em;font-size:.78rem;text-transform:uppercase}
+h2{font-size:1.9rem;margin:6px 0 8px}
+.lead{color:var(--muted);margin:0 0 24px;max-width:620px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:56px}
+.brand{font-family:Georgia,serif;font-weight:700;color:var(--green);text-decoration:none;white-space:nowrap}
+.links{display:flex;gap:4px;overflow-x:auto}
+.links a{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;font-size:.92rem;white-space:nowrap}
+.links a:hover{background:var(--tint)}
+/* hero */
+.hero{background:linear-gradient(135deg,#06402a,#0f7a4e 60%,#0b5d3b);color:#fff;text-align:center;padding:84px 0 76px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -10% -60% -10%;height:80%;background:radial-gradient(circle,rgba(242,183,5,.25),transparent 65%)}
+.hero .wrap{position:relative;z-index:1}
+.pill{display:inline-block;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:5px 16px;font-size:.82rem;letter-spacing:.06em;margin-bottom:20px}
+.hero h1{font-size:clamp(2rem,6.5vw,3.6rem);letter-spacing:.02em;text-transform:uppercase}
+.slogan{display:inline-block;margin:20px 0 14px;color:#1b1400;background:var(--gold);font-weight:800;letter-spacing:.22em;padding:10px 22px;border-radius:10px;font-size:clamp(1rem,3.4vw,1.5rem)}
+.hero p{max-width:560px;margin:0 auto 28px;color:#e5f2ea}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:700;text-decoration:none;padding:12px 24px;border-radius:10px;margin:4px}
+.btn.gold{background:var(--gold);color:#1b1400}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:40px}
+.stats b{display:block;font-size:1.6rem;font-family:Georgia,serif}
+.stats span{font-size:.82rem;color:#cfe6d9}
+/* schools */
+input[type=search],input[type=text]{width:100%;font:inherit;color:var(--text);background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:13px 16px}
+input:focus{outline:2px solid var(--green2);border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-top:18px}
+.school{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;text-align:left;cursor:pointer;font:inherit;color:var(--text);box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.school:hover{transform:translateY(-3px);border-color:var(--green2)}
+.school.on{border-color:var(--green2);background:var(--tint)}
+.school .ic{font-size:1.6rem}
+.school h3{font-size:1.05rem;margin:8px 0 4px}
+.school small{color:var(--muted)}
+.panel{background:var(--card);border:1.5px solid var(--green2);border-radius:14px;padding:20px;margin-top:18px;scroll-margin-top:70px}
+.panel h3{font-size:1.25rem;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.chip{border:0;cursor:pointer;font:inherit;background:var(--tint);color:var(--green);font-weight:600;border-radius:999px;padding:9px 16px}
+.chip:hover{background:var(--green2);color:#fff}
+.muted{color:var(--muted)}
+/* quotes */
+.quotes{background:var(--green);color:#fff}
+.qbox{text-align:center;max-width:760px;margin:0 auto}
+.qbox .mark{font-family:Georgia,serif;font-size:4rem;color:var(--gold);line-height:.5}
+.qtext{font-family:Georgia,serif;font-size:clamp(1.25rem,3.4vw,1.8rem);margin:10px 0 14px;min-height:5.5em;transition:opacity .3s}
+.qauth{color:var(--gold);font-weight:700}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:rgba(255,255,255,.35);cursor:pointer;padding:0}
+.dots button.on{background:var(--gold)}
+.quotes .eyebrow{color:var(--gold)}
+.quotes h2{color:#fff}
+/* search */
+.tabs{display:flex;gap:8px;margin:0 0 12px}
+.tab{border:1.5px solid var(--border);background:var(--card);color:var(--text);font:inherit;font-weight:600;padding:9px 18px;border-radius:999px;cursor:pointer}
+.tab.on{background:var(--green2);border-color:var(--green2);color:#fff}
+.sbar{display:flex;gap:10px}
+.sbar .btn{margin:0;background:var(--green2);color:#fff;white-space:nowrap}
+.result{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-top:16px;box-shadow:var(--shadow)}
+.result h3{font-size:1.3rem}
+.result .pos{color:var(--green);font-style:italic;margin:10px 0 2px;font-weight:600}
+.result ol{margin:4px 0;padding-left:20px}
+.result a{color:var(--green)}
+.note{font-size:.82rem;color:var(--muted);margin-top:10px}
+/* about */
+.about{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+.avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--green2),var(--gold));display:grid;place-items:center;font-family:Georgia,serif;font-size:2rem;color:#fff;font-weight:700}
+.about p{margin:8px 0;color:var(--muted)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tags span{background:var(--tint);color:var(--green);border-radius:999px;padding:4px 12px;font-size:.85rem;font-weight:600}
+@media(max-width:560px){.about{grid-template-columns:1fr;text-align:center;justify-items:center}.sbar{flex-direction:column}}
+/* footer */
+footer{background:#06402a;color:#cfe6d9;text-align:center;padding:30px 18px calc(30px + env(safe-area-inset-bottom,0px));font-size:.88rem}
+footer b{color:var(--gold);letter-spacing:.18em}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.open{display:flex}
+.mcard{background:var(--card);color:var(--text);border-radius:18px;max-width:520px;width:100%;padding:26px;position:relative;max-height:90vh;overflow:auto}
+.mcard h3{font-size:1.5rem;margin:6px 0 10px}
+.x{position:absolute;top:12px;right:14px;border:0;background:var(--tint);color:var(--green);width:34px;height:34px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+.kv{background:var(--tint);border-radius:10px;padding:12px 14px;margin-top:14px;font-size:.9rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#home">Uni Student Guide</a>
+    <div class="links">
+      <a href="#schools">Schools</a><a href="#quotes">Motivation</a><a href="#search">Ask &amp; Search</a><a href="#about">Developer</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="wrap">
+    <span class="pill">UNIVERSITY OF THE GAMBIA · STUDENT RESOURCE</span>
+    <h1>Welcome to Uni Student Guide</h1>
+    <div class="slogan">FARABA IS HOME</div>
+    <p>Explore UTG’s schools and programmes, find daily motivation, and look up words and topics in one place, made by a student, for students.</p>
+    <a class="btn gold" href="#schools">Explore Schools</a>
+    <a class="btn ghost" href="#search">Ask &amp; Search</a>
+    <div class="stats">
+      <div><b id="sc">10</b><span>Schools</span></div>
+      <div><b id="pc">0</b><span>Programmes listed</span></div>
+      <div><b>1</b><span>Home: Faraba</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="schools">
+  <div class="wrap">
+    <div class="eyebrow">Academics</div>
+    <h2>Schools &amp; Programmes</h2>
+    <p class="lead">Choose a school to see its programmes, then tap a programme for a quick preview.</p>
+    <input type="search" id="fq" placeholder="Search any programme… e.g. Management, Law, Biology" autocomplete="off">
+    <div class="grid" id="grid"></div>
+    <div class="panel" id="panel" hidden></div>
+  </div>
+</section>
+
+<section class="quotes" id="quotes">
+  <div class="wrap">
+    <div class="qbox">
+      <div class="eyebrow">Daily Motivation</div>
+      <h2>Keep going. Your future is worth it.</h2>
+      <div class="mark">“</div>
+      <div class="qtext" id="qt"></div>
+      <div class="qauth" id="qa"></div>
+      <div class="dots" id="dots"></div>
+      <button class="btn gold" id="qn" style="margin-top:22px">Next quote</button>
+    </div>
+  </div>
+</section>
+
+<section id="search">
+  <div class="wrap">
+    <div class="eyebrow">Learn</div>
+    <h2>Ask &amp; Search</h2>
+    <p class="lead">Look up the meaning of a word, or get a quick explanation of any topic.</p>
+    <div class="tabs">
+      <button class="tab on" data-m="word">Word meaning</button>
+      <button class="tab" data-m="topic">Topic / Explain</button>
+    </div>
+    <form class="sbar" id="sf">
+      <input type="text" id="sq" placeholder="Type a word, e.g. sustainable" autocomplete="off">
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div id="res"></div>
+    <p class="note">Needs an internet connection. Results come from free online dictionary and encyclopedia sources.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">Meet the Developer</div>
+    <h2>About the developer</h2>
+    <div class="about">
+      <div class="avatar" id="av">H</div>
+      <div>
+        <h3 id="dn">REAL HAA</h3>
+        <p id="db"></p>
+        <div class="tags"><span>UTG Student</span><span>Web Builder</span></div>
+        <p id="dc"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>FARABA IS HOME</b>
+  <div style="margin-top:8px">© <span id="yr"></span> Uni Student Guide. Made with pride for UTG students.</div>
+  <div style="margin-top:6px;opacity:.8">Unofficial student project. Always confirm programme details with UTG (www.utg.edu.gm).</div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="mcard">
+    <button class="x" id="mx" aria-label="Close">×</button>
+    <div class="eyebrow" id="ms"></div>
+    <h3 id="mt"></h3>
+    <p id="md" class="muted"></p>
+    <div class="kv" id="mk"></div>
+  </div>
+</div>
+
+<script>
+/* ===== EDIT THIS: developer details ===== */
+var DEV={
+  name:"REAL HAA",
+  bio:"I’m a UTG student who wanted one simple place where every student can find their school, see what programmes are offered, and stay motivated. I’m learning web development to build tools that help our community.",
+  whatsapp:"",   // e.g. "2207000000" (country code + number, no +). Leave empty to hide.
+  email:""       // e.g. "yourname@gmail.com". Leave empty to hide.
+};
+
+/* ===== DATA ===== */
+var SCHOOLS=[
+ {n:"School of Arts and Sciences",i:"🔬",p:[
+  ["Biology","Study of living organisms, from cells to ecosystems, with lab and field work."],
+  ["Chemistry","Study of matter, its properties and reactions, with practical laboratory work."],
+  ["Christian Religious Studies","Explores Christian beliefs, scripture, history and its role in society."],
+  ["Development Studies","Examines poverty, governance, economics and social change, and how communities and nations develop."],
+  ["English","Focuses on language, literature, writing and communication skills."],
+  ["French","Builds speaking, reading and writing skills in French, plus francophone culture."],
+  ["History","Investigates past events and societies to understand the present."],
+  ["Islamic Studies","Studies Islamic beliefs, law, history and civilisation."],
+  ["Mathematics","Develops problem-solving through algebra, calculus, statistics and logical reasoning."],
+  ["Physics","Explores matter, energy, motion and the laws that govern the universe."],
+  ["Political Science","Studies government, political systems, public policy and international relations."]]},
+ {n:"School of Business and Public Administration",i:"💼",p:[
+  ["Accountancy","Recording, analysing and reporting financial information for organisations."],
+  ["Banking","How banks operate and manage money, credit and financial risk."],
+  ["Economics","How people, businesses and governments make choices with limited resources."],
+  ["Finance","Managing money, investments and financial planning for people and firms."],
+  ["Human Resources","Recruiting, developing and supporting people in the workplace."],
+  ["Management","Planning, organising and leading people and resources to reach organisational goals."],
+  ["Marketing","Understanding customers and promoting products and services."],
+  ["Public Administration","Running government services and putting public policy into action."],
+  ["Tourism","Managing travel, hospitality and destinations."]]},
+ {n:"School of Education",i:"📚",p:[
+  ["Agricultural Education","Prepares teachers of agriculture and farming skills."],
+  ["Foreign Languages Education","Prepares teachers of foreign languages."],
+  ["Humanities and Social Science Education","Prepares teachers of subjects like history, geography and civics."],
+  ["Mathematics Education","Prepares teachers of mathematics."],
+  ["Native Language Education","Prepares teachers of Gambian and other native languages."],
+  ["Science Education","Prepares teachers of the sciences."],
+  ["Teacher Training","Develops teaching methods, classroom management and learning skills."]]},
+ {n:"School of Agriculture and Environmental Sciences",i:"🌱",p:[
+  ["Agriculture","Crop and animal production, farm management and food security."],
+  ["Biology","Study of living organisms, from cells to ecosystems."],
+  ["Environmental Studies","How people interact with nature, and how to protect natural resources."],
+  ["Soil Science","Soil formation, fertility and management for better farming."]]},
+ {n:"School of Engineering and Architecture",i:"🏗️",p:[
+  ["Architecture","Designing buildings and spaces that are safe, useful and beautiful."]]},
+ {n:"School of Information and Communication Technology",i:"💻",p:[]},
+ {n:"School of Journalism and Digital Media",i:"🎙️",p:[]},
+ {n:"School of Medicine and Allied Health Sciences",i:"🩺",p:[]},
+ {n:"School of Law",i:"⚖️",p:[["Law","Study of legal systems, rights, courts and how justice is applied."]]},
+ {n:"School of Graduate Studies and Research",i:"🎓",p:[]}
+];
+var QUOTES=[
+ ["Education is the most powerful weapon which you can use to change the world.","Nelson Mandela"],
+ ["It always seems impossible until it’s done.","Nelson Mandela"],
+ ["Education is the passport to the future, for tomorrow belongs to those who prepare for it today.","Malcolm X"],
+ ["A journey of a thousand miles begins with a single step.","Lao Tzu"],
+ ["If you want to go fast, go alone. If you want to go far, go together.","African proverb"],
+ ["Wisdom is like a baobab tree; no one individual can embrace it.","African proverb"]
+];
+
+/* ===== HELPERS ===== */
+function $(id){return document.getElementById(id)}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
+
+/* ===== SCHOOLS ===== */
+var sel=-1,filter="";
+var total=0;SCHOOLS.forEach(function(s){total+=s.p.length});
+$("pc").textContent=total;$("sc").textContent=SCHOOLS.length;
+function draw(){
+  var g=$("grid");g.innerHTML="";
+  SCHOOLS.forEach(function(s,idx){
+    var hits=s.p.filter(function(p){return p[0].toLowerCase().indexOf(filter)>-1});
+    if(filter&&!hits.length&&s.n.toLowerCase().indexOf(filter)<0)return;
+    var b=el("button","school"+(idx===sel?" on":""));
+    b.appendChild(el("div","ic",s.i));
+    b.appendChild(el("h3","",s.n));
+    b.appendChild(el("small","",s.p.length?s.p.length+" programme"+(s.p.length>1?"s":"")+" listed":"Programmes coming soon"));
+    b.onclick=function(){sel=idx;draw();showPanel()};
+    g.appendChild(b);
+  });
+  if(!g.children.length)g.appendChild(el("p","muted","No match found. Try another word."));
+}
+function showPanel(){
+  var p=$("panel"),s=SCHOOLS[sel];
+  if(!s){p.hidden=true;return}
+  p.hidden=false;p.innerHTML="";
+  p.appendChild(el("h3","",s.i+" "+s.n));
+  if(!s.p.length){
+    p.appendChild(el("p","muted","Programmes for this school haven’t been added yet. Check www.utg.edu.gm or ask the school office."));
+  }else{
+    p.appendChild(el("p","muted","Tap a programme for a preview."));
+    var c=el("div","chips");
+    s.p.forEach(function(pr){
+      var b=el("button","chip",pr[0]);
+      b.onclick=function(){openModal(s,pr)};
+      c.appendChild(b);
+    });
+    p.appendChild(c);
+  }
+  p.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+$("fq").addEventListener("input",function(e){
+  filter=e.target.value.trim().toLowerCase();
+  var first=-1;
+  if(filter)SCHOOLS.forEach(function(s,i){if(first<0&&s.p.some(function(p){return p[0].toLowerCase().indexOf(filter)>-1}))first=i});
+  sel=first;draw();showPanel();
+});
+draw();
+
+/* ===== MODAL ===== */
+function openModal(s,pr){
+  $("ms").textContent=s.n;$("mt").textContent=pr[0];$("md").textContent=pr[1];
+  $("mk").textContent="This is a general overview of the subject area. For exact courses, entry requirements and fees, confirm with the UTG admissions office.";
+  $("modal").classList.add("open");
+}
+function closeModal(){$("modal").classList.remove("open")}
+$("mx").onclick=closeModal;
+$("modal").addEventListener("click",function(e){if(e.target===$("modal"))closeModal()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal()});
+
+/* ===== QUOTES ===== */
+var qi=0,timer;
+function showQ(i){
+  qi=(i+QUOTES.length)%QUOTES.length;
+  var t=$("qt");t.style.opacity=0;
+  setTimeout(function(){t.textContent=QUOTES[qi][0];$("qa").textContent="— "+QUOTES[qi][1];t.style.opacity=1},250);
+  Array.prototype.forEach.call($("dots").children,function(d,k){d.className=k===qi?"on":""});
+}
+QUOTES.forEach(function(_,k){var d=el("button");d.setAttribute("aria-label","Quote "+(k+1));d.onclick=function(){showQ(k);restart()};$("dots").appendChild(d)});
+function restart(){clearInterval(timer);timer=setInterval(function(){showQ(qi+1)},9000)}
+$("qn").onclick=function(){showQ(qi+1);restart()};
+showQ(Math.floor(Math.random()*QUOTES.length));restart();
+
+/* ===== ASK & SEARCH ===== */
+var mode="word";
+Array.prototype.forEach.call(document.querySelectorAll(".tab"),function(t){
+  t.onclick=function(){
+    mode=t.getAttribute("data-m");
+    Array.prototype.forEach.call(document.querySelectorAll(".tab"),function(x){x.classList.toggle("on",x===t)});
+    $("sq").placeholder=mode==="word"?"Type a word, e.g. sustainable":"Type a topic, e.g. Photosynthesis, inflation";
+    $("res").innerHTML="";
+  };
+});
+function msg(t){var r=el("div","result");r.appendChild(el("p","muted",t));$("res").innerHTML="";$("res").appendChild(r)}
+function lookupWord(w){
+  msg("Searching…");
+  fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(w))
+   .then(function(r){if(!r.ok)throw 0;return r.json()})
+   .then(function(d){
+     var box=el("div","result");box.appendChild(el("h3","",d[0].word));
+     if(d[0].phonetic)box.appendChild(el("div","muted",d[0].phonetic));
+     d[0].meanings.slice(0,3).forEach(function(m){
+       box.appendChild(el("div","pos",m.partOfSpeech));
+       var ol=el("ol");
+       m.definitions.slice(0,3).forEach(function(df){
+         var li=el("li","",df.definition);
+         if(df.example)li.appendChild(el("div","muted","e.g. “"+df.example+"”"));
+         ol.appendChild(li);
+       });
+       box.appendChild(ol);
+     });
+     $("res").innerHTML="";$("res").appendChild(box);
+   })
+   .catch(function(){msg("No meaning found for “"+w+"”. Check the spelling, or try the Topic tab.")});
+}
+function lookupTopic(q){
+  msg("Searching…");
+  fetch("https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&format=json&origin=*&search="+encodeURIComponent(q))
+   .then(function(r){return r.json()})
+   .then(function(d){
+     if(!d[1]||!d[1][0])throw 0;
+     return fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(d[1][0].replace(/ /g,"_")));
+   })
+   .then(function(r){return r.json()})
+   .then(function(s){
+     var box=el("div","result");
+     box.appendChild(el("h3","",s.title));
+     if(s.description)box.appendChild(el("div","muted",s.description));
+     box.appendChild(el("p","",s.extract));
+     if(s.content_urls){var a=el("a","","Read more on Wikipedia");a.href=s.content_urls.desktop.page;a.target="_blank";a.rel="noopener";box.appendChild(a)}
+     $("res").innerHTML="";$("res").appendChild(box);
+   })
+   .catch(function(){msg("I couldn’t find a clear answer for “"+q+"”. Try different or simpler words.")});
+}
+$("sf").addEventListener("submit",function(e){
+  e.preventDefault();
+  var v=$("sq").value.trim();if(!v)return;
+  if(mode==="word")lookupWord(v.split(/\s+/)[0]);else lookupTopic(v);
+});
+
+/* ===== DEVELOPER ===== */
+$("dn").textContent=DEV.name;$("db").textContent=DEV.bio;$("av").textContent=DEV.name.charAt(0);
+var dc=$("dc"),parts=[];
+if(DEV.whatsapp){var w=el("a","btn gold","Chat on WhatsApp");w.href="https://wa.me/"+DEV.whatsapp;w.target="_blank";w.rel="noopener";w.style.margin="8px 8px 0 0";dc.appendChild(w)}
+if(DEV.email){var m=el("a","btn gold","Email me");m.href="mailto:"+DEV.email;m.style.margin="8px 0 0";dc.appendChild(m)}
+$("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
